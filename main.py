@@ -16,7 +16,7 @@ def create_parser():
 
     ### model parameters 
     parser.add_argument('--res_dir', default='./results', type=str, help='the directory to save the results')
-    parser.add_argument('--ex_name', default='ver_260106_tar3', type=str, help='the name of the experiment')
+    parser.add_argument('--ex_name', default='tar1', type=str, help='the name of the experiment')
     parser.add_argument('--model_name', default='TSMIXER', type=str, help='the name of the model')
     parser.add_argument('--hidden_size', default=512, type=int, help='hidden size for fcn layers')
     parser.add_argument('--n_blocks', default=4, type=int, help='the number of blocks of tsmixer model')
