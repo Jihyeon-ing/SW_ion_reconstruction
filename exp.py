@@ -25,12 +25,12 @@ class Exp:
         if torch.cuda.is_available():
             self.device = torch.device("cuda")
             os.environ['CUDA_VISIBLE_DEVICES'] = self.args.gpu
-            print(f"GPU 개수: {torch.cuda.device_count()}")
-            print(f"현재 사용 중인 GPU: {torch.cuda.current_device()}")
-            print(f"GPU 이름: {torch.cuda.get_device_name(0)}")
+            print(f"The number of GPUs: {torch.cuda.device_count()}")
+            print(f"Current GPUs: {torch.cuda.current_device()}")
+            print(f"Name of GPU: {torch.cuda.get_device_name(0)}")
         else:
             self.device = torch.device("cpu")
-            print("현재 GPU를 사용할 수 없습니다.")
+            print("GPU is unavailable now.")
 
         self.model_path = os.path.join('models', self.args.ex_name, self.args.model_name, self.args.mode)
         os.makedirs(self.model_path, exist_ok=True)
@@ -150,7 +150,7 @@ class Exp:
         model = self.model
         model.load_state_dict(torch.load(load_path, map_location=self.device))
         model.to(self.device)
-        model.eval()  # 평가 모드 전환
+        model.eval()  
         print(f"Model loaded from {load_path}")
 
         pred = []
