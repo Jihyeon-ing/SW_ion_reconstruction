@@ -1,6 +1,4 @@
-# sw_ion
-
-English | [한국어](README.ko.md)
+# Reconstructing heavy-ion charge state ratios and elemental composition of solar wind with interpretable deep learning
 
 A TSMixer model that estimates solar wind ion composition ratios (C6+/C5+, O7+/O6+, Fe/O) from in-situ solar wind observations (ACE).
 
@@ -28,7 +26,6 @@ Preprocessing (`dataloader.py`)
 pip install torch numpy pandas scikit-learn matplotlib tqdm torchinfo torchsummary
 ```
 
-The device is selected automatically in the order MPS → CUDA → CPU.
 
 ## Usage
 
@@ -51,19 +48,6 @@ Outputs
 - `models/{ex_name}/best_model_state_dict.pth` : the model with the lowest validation loss
 - `results/{ex_name}/TSMIXER/full_pred.npy` : test set predictions (standardized log10 values)
 
-## Ablation
-
-A leave-one-feature-out experiment that removes one input feature at a time. Every run uses the same samples.
-
-```bash
-python ablation.py --tar_idx 1
-```
-
-```bash
-python ablation.py --tar_idx 1 --seeds 777 --only all no_Vp
-```
-
-Results are saved to `results/ablation_{target}/` (`summary.csv`: mean and standard deviation of the Pearson CC per experiment).
 
 ## Files
 
@@ -73,7 +57,3 @@ Results are saved to `results/ablation_{target}/` (`summary.csv`: mean and stand
 | `exp.py` | training, validation and test loops |
 | `dataloader.py` | dataset loading and preprocessing |
 | `models.py` | TSMixer, MLP and ResidualMLP model definitions |
-| `ablation.py` | feature ablation experiment |
-| `data_preprocess.ipynb` | builds `dataset_vF.npz` from the raw CSV files |
-| `Figure/` | paper figures and plotting scripts |
-| `Solar orbiter/` | experiments on Solar Orbiter data (see its own Readme) |
